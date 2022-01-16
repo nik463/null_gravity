@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+
+</html><!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Projects</title>
 </head>
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 <link rel="stylesheet" href="{% static '/nik_files/linearicons.css' %}">
@@ -46,15 +47,121 @@
           <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
               <h1 class="text-white">
-                Portfolio
+                Projects
               </h1>
-              <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> Portfolio</a></p>
+              <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> Projects</a></p>
             </div>
           </div>
         </div>
       </section>
       <!-- End banner Area -->
+      <div>
+        {% if user.is_authenticated %}
+            <a class="logout-bttn primary-border" href="{% url 'logout' %}">Logout</a>
+            </div>
 
+      <!-- content -->
+      <section class="services-area section-gap">
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="menu-content  col-lg-7">
+              <div class="title text-center">
+                <h1 class="mb-10">My Projects</h1>
+                <p> Take a look at some of my projects I  worked on.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="single-services">
+                <span class="lnr lnr-rocket"></span>
+                <a>
+                  <h4>Mask</h4>
+                </a>
+                <p>
+                  Did you weared mask properly???
+                </p>
+              </div>
+            </div>
+    
+    
+    
+            <div class="col-lg-4 col-md-6">
+              <div class="single-services">
+                <span class="lnr lnr-dice"></span>
+                <a>
+                  <h4>Face recogniton</h4>
+                </a>
+                <p>
+                  identify the mollywood actors???
+                </p>
+              </div>
+            </div>
+    
+            <div class="col-lg-4 col-md-6">
+              <div class="single-services">
+                <span class="lnr lnr-chart-bars"></span>
+                <a>
+                  <h4>Data Analytics</h4>
+                </a>
+                <p>
+                Visualize your data
+                </p>
+              </div>
+            </div>
+    
+    
+            <div class="col-lg-4 col-md-6">
+              <div class="single-services">
+                <a href="/covid-dashboard/">
+                <span class="lnr lnr-bug"></span></a>
+                <a href="/covid-dashboard/">
+                  <h4>Covid-19</h4>
+                </a>
+                <p>
+                  A small dashboad related covid-19
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-services">
+                <span class="lnr lnr-laptop-phone"></span>
+                <a>
+                  <h4>Text extractor</h4>
+                </a>
+                <p>
+                  copy your texts
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-services">
+                <span class="lnr lnr-select"></span>
+                <a>
+                  <h4>Web Development</h4>
+                </a>
+                <p>
+                  some webpages
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> 
+
+     
+      
+      <!-- Login or signup -->
+        {% else %}
+        <div class="login-text-area">
+  
+        <!-- <a href="{% url 'signup' %}">Sign Up</a> -->
+        <h6>You are not logged in, Please 
+  
+        <a href="{% url 'login' %}" ">Login</a></h6>
+      </div>
+        {% endif %}
 
 
   <!-- start footer Area -->
@@ -114,7 +221,6 @@
       </div>
     </div>
   </footer>
-  <!-- End footer Area -->
   
   <script src="{% static '/nik_files/jquery-2.2.4.min.js.download' %}"></script>
   <script src="{% static '/nik_files/popper.min.js.download' %}"></script>

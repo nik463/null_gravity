@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+  
 
 <head>
   <meta charset="UTF-8">
@@ -8,33 +10,33 @@
   <title>Nikhil's Portfolio Website</title>
 </head>
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-<link rel="stylesheet" href="./nik_files/linearicons.css">
-<link rel="stylesheet" href="./nik_files/font-awesome.min.css">
-<link rel="stylesheet" href="./nik_files/bootstrap.css">
-<link rel="stylesheet" href="./nik_files/magnific-popup.css">
-<link rel="stylesheet" href="./nik_files/jquery-ui.css">
-<link rel="stylesheet" href="./nik_files/nice-select.css">
-<link rel="stylesheet" href="./nik_files/animate.min.css">
-<link rel="stylesheet" href="./nik_files/owl.carousel.css">
-<link rel="stylesheet" href="./nik_files/main.css">
-
-<body>
+<link rel="stylesheet" href="{% static '/nik_files/linearicons.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/jquery-ui.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/nice-select.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/animate.min.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/owl.carousel.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/main.css' %}">
+<body style="display: block;"><button type="button" id="mobile-nav-toggle"><i class="lnr lnr-menu"></i></button>
 
 
   <header id="header">
     <div class="container main-menu">
       <div class="row align-items-center justify-content-between d-flex">
-        <div class id="logo">
+        <div class="" id="logo">
           <a href="">
             <h3>Nikhil.J</h3>
           </a>
         </div>
         <nav id="nav-menu-container">
-          <ul class="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="./nik_files/Nikhil's Resume.pdf" class="genric-btn primary-border circle"
+          <ul class="nav-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about-me/">About</a></li>
+            <li><a href="/portfolio/">Portfolio</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="{% static '/nik_files/Nikhil_Resume.pdf' %}" class="genric-btn primary-border circle"
                 target="_blank">Resume</a></li>
           </ul>
         </nav><!-- #nav-menu-container -->
@@ -55,7 +57,7 @@
           <a href="https://github.com/nik463" class="primary-btn text-uppercase mb-20">My Projects</a>
         </div>
         <div class="col-lg-6 col-md-6 col-xs-6 banner-right align-self-center">
-          <img src="./nik_files/nik.png" style="width:auto;height:auto;max-width:100%;">
+          <img src="{% static '/nik_files/nik.png' %}" style="width:auto;height:auto;max-width:100%;">
         </div>
       </div>
     </div>
@@ -86,7 +88,7 @@
           </p>
 
         </blockquote>
-        <a href="about.html" class="primary-btn text-uppercase">About me</a>
+        <a href="about-me/" class="primary-btn text-uppercase">About me</a>
 
       </div>
     </div>
@@ -249,7 +251,25 @@
     </div>
   </footer>
   <!-- End footer Area -->
-
+      <script src="{% static '/nik_files/jquery-2.2.4.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/popper.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/bootstrap.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/js' %}"></script>
+  		<script src="{% static '/nik_files/easing.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/hoverIntent.js.download' %}"></script>
+			<script src="{% static '/nik_files/superfish.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/jquery.ajaxchimp.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/jquery.magnific-popup.min.js.download' %}"></script>
+    	<script src="{% static '/nik_files/jquery.tabs.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/jquery.nice-select.min.js.download' %}"></script>
+      <script src="{% static '/nik_files/isotope.pkgd.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/waypoints.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/jquery.counterup.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/simple-skillbar.js.download' %}"></script>
+			<script src="{% static '/nik_files/owl.carousel.min.js.download' %}"></script>
+			<script src="{% static '/nik_files/mail-script.js.download' %}"></script>
+			<script src="{% static '/nik_files/scroll.js.download' %}"></script>
+			<script src="{% static '/nik_files/main.js.download' %}"></script>
 
 
 

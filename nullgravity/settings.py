@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nullgravity',
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'channels',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -118,8 +122,54 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR/'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# users will be redirected to the home page after login
+LOGIN_REDIRECT_URL = 'projects'
+
+LOGOUT_REDIRECT_URL = 'login'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+ASGI_APPLICATION = 'covid19.routing.application'
+
+
+# Static content of Plotly components that should
+# be handled by the Django staticfiles infrastructure
+
+PLOTLY_COMPONENTS = [
+    'dash_core_components',
+    'dash_html_components',
+    'dash_bootstrap_components',
+    'dash_renderer',
+    'dpd_components',
+    'dpd_static_support',
+]
+
+# Staticfiles finders for locating dash app assets and related files (Dash static files)
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django_plotly_dash.finders.DashAssetFinder',
+    'django_plotly_dash.finders.DashComponentFinder',
+    'django_plotly_dash.finders.DashAppDirectoryFinder',
+]
+
+# Channels config, to use channel layers
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379),],
+        },
+    },
+}

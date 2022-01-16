@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 {% load static %}
 <html lang="en">
 <head>
@@ -55,9 +55,26 @@
       </section>
       <!-- End banner Area -->
 
+      <!--/templates/register.html-->
+
+{% block content %}
+<h2>Register</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Register">
+</form>
+
+<a href="{% url 'login' %}">Back to xlogin</a>
+<a href="{% url 'home' %}">Back to Home</a>
+{% endblock %}
 
 
-  <!-- start footer Area -->
+
+
+
+        <!-- start footer Area -->
   <footer class="footer-area section-gap">
     <div class="container">
       <div class="row">
@@ -115,7 +132,7 @@
     </div>
   </footer>
   <!-- End footer Area -->
-  
+
   <script src="{% static '/nik_files/jquery-2.2.4.min.js.download' %}"></script>
   <script src="{% static '/nik_files/popper.min.js.download' %}"></script>
   <script src="{% static '/nik_files/bootstrap.min.js.download' %}"></script>
@@ -135,7 +152,6 @@
   <script src="{% static '/nik_files/mail-script.js.download' %}"></script>
   <script src="{% static '/nik_files/scroll.js.download' %}"></script>
   <script src="{% static '/nik_files/main.js.download' %}"></script>
-
 
 </body>
 </html>

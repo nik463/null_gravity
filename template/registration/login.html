@@ -46,18 +46,39 @@
           <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
               <h1 class="text-white">
-                Portfolio
+                Projects
               </h1>
-              <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> Portfolio</a></p>
+              <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> Projects</a></p>
             </div>
           </div>
         </div>
       </section>
       <!-- End banner Area -->
 
+    <!-- registration/login.html -->
+
+<!-- {% block title %}Login{% endblock %} -->
+<div class="log-screen">
+
+{% block content %}
+  <h2>Login</h2>
+  
+    <form method="post">
+      {% csrf_token %}
+      <table>
+        {{ form.as_p }}
+        <tr>
+          <td>&nbsp;</td>
+          <td class="bttn"><input class="bttn" type="submit" value="Submit"></td>
+        </tr>                
+      </table>
+    </form>
+{% endblock %}
+</div>
 
 
-  <!-- start footer Area -->
+
+        <!-- start footer Area -->
   <footer class="footer-area section-gap">
     <div class="container">
       <div class="row">
@@ -114,6 +135,10 @@
       </div>
     </div>
   </footer>
+  
+  
+  
+
   <!-- End footer Area -->
   
   <script src="{% static '/nik_files/jquery-2.2.4.min.js.download' %}"></script>
@@ -135,7 +160,6 @@
   <script src="{% static '/nik_files/mail-script.js.download' %}"></script>
   <script src="{% static '/nik_files/scroll.js.download' %}"></script>
   <script src="{% static '/nik_files/main.js.download' %}"></script>
-
 
 </body>
 </html>
