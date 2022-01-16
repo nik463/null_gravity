@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nikhil's Portfolio Website | {% block title %}  {% endblock %}</title>
+</head>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+
+
+<link rel="stylesheet" href="{% static '/nik_files/linearicons.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/jquery-ui.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/nice-select.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/animate.min.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/owl.carousel.css' %}">
+<link rel="stylesheet" href="{% static '/nik_files/main.css' %}">
+<body style="display: block;"><button type="button" id="mobile-nav-toggle"><i class="lnr lnr-menu"></i></button>
+
+
+<body class="">
+
+       
+        <div class="main-content">
+      
+          {% block content %}{% endblock content %}
+      
+        </div>
+      
+        {% include "includes/scripts.html" %}
+      
+        <!-- Specific JS goes HERE --> 
+        {% block javascripts %}{% endblock javascripts %}
+      
+</body>
+    
+</html>
+      

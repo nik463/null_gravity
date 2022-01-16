@@ -1,0 +1,25 @@
+{% load humanize %}
+{% load static %}
+
+
+<header id="header">
+    <div class="container main-menu">
+      <div class="row align-items-center justify-content-between d-flex">
+        <div class="" id="logo">
+          <a href="">
+            <h3>Nikhil.J</h3>
+          </a>
+        </div>
+        <nav id="nav-menu-container">
+          <ul class="nav-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about-me/">About</a></li>
+            <li><a href="/portfolio/">Portfolio</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="{% static '/nik_files/Nikhil_Resume.pdf' %}" class="genric-btn primary-border circle"
+                target="_blank">Resume</a></li>
+          </ul>
+        </nav><!-- #nav-menu-container -->
+      </div>
+    </div>
+</header>
