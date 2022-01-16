@@ -38,9 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nullgravity',
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'channels',
-    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -136,40 +133,3 @@ LOGIN_REDIRECT_URL = 'projects'
 
 LOGOUT_REDIRECT_URL = 'login'
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-ASGI_APPLICATION = 'covid19.routing.application'
-
-
-# Static content of Plotly components that should
-# be handled by the Django staticfiles infrastructure
-
-PLOTLY_COMPONENTS = [
-    'dash_core_components',
-    'dash_html_components',
-    'dash_bootstrap_components',
-    'dash_renderer',
-    'dpd_components',
-    'dpd_static_support',
-]
-
-# Staticfiles finders for locating dash app assets and related files (Dash static files)
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django_plotly_dash.finders.DashAssetFinder',
-    'django_plotly_dash.finders.DashComponentFinder',
-    'django_plotly_dash.finders.DashAppDirectoryFinder',
-]
-
-# Channels config, to use channel layers
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [('127.0.0.1', 6379),],
-        },
-    },
-}
