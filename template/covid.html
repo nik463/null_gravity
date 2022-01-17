@@ -1,1 +1,43 @@
-<div class="{% plotly_class name='SimpleExample' %} col-md-12 card shadow mb-4">{% plotly_app name='SimpleExample' ratio=0.45 %}</div>
+{% extends 'layouts/base.html' %}
+{% load humanize %}
+{% load static %}
+
+
+{% block title %} Portfolio {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    {% include "includes/header.html" %}
+
+
+
+{% load plotly_dash %}
+<br><br><br>
+<h1>Dashboard</h1>
+
+<div class="{% plotly_class name='SimpleExample' %} card" style="height: 100%;width: 100%;">
+{% plotly_app name='SimpleExample' ratio=0.65 %}
+
+</div>
+
+
+
+
+<!-- contens area -->
+
+
+
+  <!-- start footer Area -->
+
+  {% include "includes/footer.html" %}
+
+  <!-- End footer Area -->
+
+   <!-- Include script -->
+   {% include "includes/scripts.html" %}
+
+
+{% endblock content %}

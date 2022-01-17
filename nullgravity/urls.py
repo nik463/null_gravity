@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('',include('portfolio.urls')),
+    path('', include('coviddash.urls')),
+    path('django_plotly_dash/', include('django_plotly_dash.urls')),
 ]
