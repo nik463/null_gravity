@@ -10,59 +10,11 @@ import plotly.express as px
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = DjangoDash('SimpleExample')   # replaces dash.Dash
-
-app.layout = html.Div([
-    dcc.RadioItems(
-        id='dropdown-color',
-        options=[{'label': c, 'value': c.lower()} for c in ['Red', 'Green', 'Blue']],
-        value='red'
-    ),
-    html.Div(id='output-color'),
-    dcc.RadioItems(
-        id='dropdown-size',
-        options=[{'label': i,
-                  'value': j} for i, j in [('L','large'), ('M','medium'), ('S','small')]],
-        value='medium'
-    ),
-    html.Div(id='output-size')
-
-])
-
-@app.callback(
-    dash.dependencies.Output('output-color', 'children'),
-    [dash.dependencies.Input('dropdown-color', 'value')])
-def callback_color(dropdown_value):
-    return "The selected color is %s." % dropdown_value
-
-@app.callback(
-    dash.dependencies.Output('output-size', 'children'),
-    [dash.dependencies.Input('dropdown-color', 'value'),
-     dash.dependencies.Input('dropdown-size', 'value')])
-def callback_size(dropdown_color, dropdown_size):
-    return "The chosen T-shirt is a %s %s one." %(dropdown_size,
-                                                  dropdown_color)
-
-
-
-########################################################
 
 
 df = pd.read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv", usecols = ['iso_code', 'continent', 'location', 'date', 'total_cases', 'new_cases','total_deaths', 'new_deaths','total_vaccinations','people_vaccinated', 'people_fully_vaccinated'])
 df["date"] = pd.to_datetime(df["date"])
-df.sort_values('date',inplace=True)
-# df['total_cases'] = int(df['total_cases'])
-
-def get_country_list():
-    return df.location.unique()
-
-def getdropdown(countrylst):
-    dropdownlist = []
-    for i in sorted(countrylst):
-        tmp_dict = {'label':i,'value':i}
-        dropdownlist.append(tmp_dict)
-    return dropdownlist
-
+available_countries = df['location'].unique()
 
 app = DjangoDash('SimpleExample1') 
 
@@ -75,26 +27,28 @@ app.layout = html.Div(
         html.P(children="this is worldwide details of covid-19.from this you can generate variius details",),
 
         dcc.Dropdown(
-            id='drop-down',
-            options=getdropdown(get_country_list()),
-            value='India'
+        id='clientside-graph-country',
+        options=[
+            {'label': country, 'value': country}
+            for country in available_countries
+        ],
+        value='Canada'
         ),
-
         dcc.Graph(
+        id='clientside-graph',
+    ),
 
-            figure={
-                "data": [
-                    {
-                        "x": df["date"],
-                        "y": df["total_cases"],
-                        "type":"lines",
 
-                    },
-                ],
-                "layout": {"title":"Covid details"},
-            },
-        ),
     ]
 )
 
 
+@app.callback (
+    Output(component_id='clientside-graph',component_property='figure'),
+    Input(component_id='clientside-graph-country',component_property='value'),
+)
+def dun(op):
+    dff= df[df["location"]==op]
+    fig=px.line(dff, x='date', y=["total_cases","total_deaths"], title="Total Case Of {}".format(op))
+    fig.update_layout(title_x=0.5, plot_bgcolor='#F2DFCE',paper_bgcolor='#fff', xaxis_title="Date")
+    return fig
