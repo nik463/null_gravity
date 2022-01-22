@@ -16,12 +16,35 @@
 
 {% load plotly_dash %}
 <br><br><br>
-<h1>Dashboard</h1>
 
-<div class="{% plotly_class name='SimpleExample' %} card" style="height: 100%;width: 100%;">
-{% plotly_app name='SimpleExample' ratio=0.65 %}
+{% if user.is_authenticated %}
 
+<div>
+    <a class="logout-bttn primary-border" href="{% url 'logout' %}">Logout</a>
+    </div>
+<h1 style="text-align: center;">Dashboard</h1>
+
+
+
+<div class="{% plotly_class name='SimpleExample' %} card">
+    {% plotly_app name='SimpleExample1' ratio=0.90 %}
+    
+    </div>
+
+
+<script style="text-align: center;"
+<br>
+
+<!-- Login or signup -->
+{% else %}
+<div class="login-text-area">
+
+<!-- <a href="{% url 'signup' %}">Sign Up</a> -->
+<h6>You are not logged in, Please 
+
+<a href="{% url 'login' %}" ">Login</a></h6>
 </div>
+{% endif %}
 
 
 
