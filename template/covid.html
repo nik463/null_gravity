@@ -15,10 +15,9 @@
 
 
 {% load plotly_dash %}
-<br><br><br>
 
 {% if user.is_authenticated %}
-
+<br><br><br>
 <div>
     <a class="logout-bttn primary-border" href="{% url 'logout' %}">Logout</a>
     </div>
@@ -31,8 +30,6 @@
     
     </div>
 
-<br>
-
 <!-- Login or signup -->
 {% else %}
 <div class="login-text-area">
@@ -40,7 +37,7 @@
 <!-- <a href="{% url 'signup' %}">Sign Up</a> -->
 <h6>You are not logged in, Please 
 
-<a href="{% url 'login' %}" ">Login</a></h6>
+<a href="{% url 'login' %}">Login</a></h6>
 </div>
 {% endif %}
 

@@ -16,28 +16,87 @@ df = pd.read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv", us
 df["date"] = pd.to_datetime(df["date"])
 available_countries = df['location'].unique()
 
-app = DjangoDash('SimpleExample1')
+
+card_content0 = [
+    dbc.CardHeader("Toatal Cases"),
+    dbc.CardBody(
+        [
+            html.H5(id="tccard", children=[]),
+            html.P(
+                "Peoples are affected",
+                className="card-text",
+            ),
+        ]
+    ),
+]
+
+card_content = [
+    dbc.CardHeader("Vaccinated"),
+    dbc.CardBody(
+        [
+            html.H5(id='vaccinecard',children=[]),
+            html.P(
+                "Peoples are vaccinated",
+                className="card-text",
+            ),
+        ]
+    ),
+]
+
+card_content1 = [
+    dbc.CardHeader("Deaths"),
+    dbc.CardBody(
+        [
+            html.H5(id='deathcard',children=[]),
+            html.P(
+                "Peoples are died",
+                className="card-text",
+            ),
+        ]
+    ),
+]
+
+
+app = DjangoDash('SimpleExample1',external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
 app.layout = html.Div(
 
     children=[
-        html.H1(children="covid latest updates",style={"text-align":"center"},),
+        html.H1(children="Covid-19 Latest Updates",style={"text-align":"center"},),
 
         html.P(children="This is worldwide details of covid-19.Some country not updating there data, it make our graph blank",style={"text-align":"center"}),
-    
+
+        html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(dbc.Card(card_content, color="success", inverse=True)),
+                dbc.Col(dbc.Card(card_content0, color="warning", inverse=True)),
+                dbc.Col(dbc.Card(card_content1, color="danger", inverse=True)),
+            ],
+            className="mb-4",
+        ),
+         ]
+),
+    html.Div(
+    [
+        dbc.Row(
+            [
+                dbc.Col(html.Div(
         dcc.Dropdown(
         id='clientside-graph-country',
-        style={"max-width":"50%"},
         options=[
             {'label': country, 'value': country}
             for country in available_countries
         ],
         value='World'
         ),
+        )),
+         dbc.Col(html.Div(
         dcc.Dropdown(
             id='type-select',
-            style={"max-width":"50%"},
+            style={"max-widht":"100%"},
             options=[
                 {'label':'Deaths','value':'total_deaths'},
                 {'label':'Vaccinated','value':'total_vaccinations'},
@@ -47,22 +106,34 @@ app.layout = html.Div(
             value='total_cases',
             placeholder="Select type",
         ),
+        )),
+     ]
+        ),
+    ]
+),
         dcc.Graph(
         id='clientside-graph',
                 ),
-
-
+        html.P(children="This is worldwide details of covid-19.Some country not updating there data, it make our graph blank",style={"text-align":"center"}),
+        
     ]
 )
 
 
 @app.callback (
-    Output(component_id='clientside-graph',component_property='figure'),
+    [Output(component_id='deathcard',component_property='children'),
+    Output('vaccinecard','children'),
+    Output('tccard','children'),
+    Output(component_id='clientside-graph',component_property='figure')],
     [Input(component_id='clientside-graph-country',component_property='value'),
     Input(component_id='type-select',component_property='value')],
 )
 def dun(op,typ):
     dff= df[df["location"]==op]
-    fig=px.line(dff, x='date', y=typ, title="{}".format(typ).capitalize().replace("_"," ")+" report in {}".format(op))
+    dvalue=int(dff["total_deaths"].iloc[-2])
+    vvalue=int(dff["total_vaccinations"].iloc[-2])
+    tvalue=int(dff["total_cases"].iloc[-2])
+    fig=px.line(dff, x='date', y=typ, title="{}".format(typ).capitalize().replace("_"," ")+" report in {}".format(op),height=600)
     fig.update_layout(title_x=0.5, plot_bgcolor='#fff',paper_bgcolor='#fff', xaxis_title="Date", yaxis_title="{}".format(typ).capitalize().replace("_"," "))
-    return fig
+    return dvalue,vvalue,tvalue,fig
+
