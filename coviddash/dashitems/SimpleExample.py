@@ -16,27 +16,40 @@ df = pd.read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv", us
 df["date"] = pd.to_datetime(df["date"])
 available_countries = df['location'].unique()
 
-app = DjangoDash('SimpleExample1') 
+app = DjangoDash('SimpleExample1')
 
 
 app.layout = html.Div(
 
     children=[
-        html.H1(children="covid latest updates",),
+        html.H1(children="covid latest updates",style={"text-align":"center"},),
 
-        html.P(children="this is worldwide details of covid-19.from this you can generate variius details",),
-
+        html.P(children="This is worldwide details of covid-19.Some country not updating there data, it make our graph blank",style={"text-align":"center"}),
+    
         dcc.Dropdown(
         id='clientside-graph-country',
+        style={"max-width":"50%"},
         options=[
             {'label': country, 'value': country}
             for country in available_countries
         ],
-        value='Canada'
+        value='World'
+        ),
+        dcc.Dropdown(
+            id='type-select',
+            style={"max-width":"50%"},
+            options=[
+                {'label':'Deaths','value':'total_deaths'},
+                {'label':'Vaccinated','value':'total_vaccinations'},
+                {'label':'Total Cases','value':'total_cases'},
+
+            ],
+            value='total_cases',
+            placeholder="Select type",
         ),
         dcc.Graph(
         id='clientside-graph',
-    ),
+                ),
 
 
     ]
@@ -45,10 +58,11 @@ app.layout = html.Div(
 
 @app.callback (
     Output(component_id='clientside-graph',component_property='figure'),
-    Input(component_id='clientside-graph-country',component_property='value'),
+    [Input(component_id='clientside-graph-country',component_property='value'),
+    Input(component_id='type-select',component_property='value')],
 )
-def dun(op):
+def dun(op,typ):
     dff= df[df["location"]==op]
-    fig=px.line(dff, x='date', y=["total_cases","total_deaths"], title="Total Case Of {}".format(op))
-    fig.update_layout(title_x=0.5, plot_bgcolor='#F2DFCE',paper_bgcolor='#fff', xaxis_title="Date")
+    fig=px.line(dff, x='date', y=typ, title="{}".format(typ).capitalize().replace("_"," ")+" report in {}".format(op))
+    fig.update_layout(title_x=0.5, plot_bgcolor='#fff',paper_bgcolor='#fff', xaxis_title="Date", yaxis_title="{}".format(typ).capitalize().replace("_"," "))
     return fig
