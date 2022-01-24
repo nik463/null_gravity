@@ -21,5 +21,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('',include('portfolio.urls')),
     path('', include('coviddash.urls')),
+    path('', include('mask.urls')),
     path('django_plotly_dash/', include('django_plotly_dash.urls')),
 ]

@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+{% load humanize %}
+{% load static %}
+
+
+{% block title %} Portfolio {% endblock title %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    {% include "includes/header.html" %}
+
+
+
+{% load plotly_dash %}
+
+{% if user.is_authenticated %}
+<br><br><br>
+<div>
+    <a class="logout-bttn primary-border" href="{% url 'logout' %}">Logout</a>
+    </div>
+<h1 style="text-align: center;">MASK</h1>
+
+
+
+<div class="{% plotly_class name='SimpleExample1' %} card">
+    {% plotly_app name='mask' ratio=0.90 %}
+    
+    </div>
+
+<!-- Login or signup -->
+{% else %}
+<div class="login-text-area">
+
+<!-- <a href="{% url 'signup' %}">Sign Up</a> -->
+<h6>You are not logged in, Please 
+
+<a href="{% url 'login' %}">Login</a></h6>
+</div>
+{% endif %}
+
+
+
+
+<!-- contens area -->
+
+
+
+  <!-- start footer Area -->
+
+  {% include "includes/footer.html" %}
+
+  <!-- End footer Area -->
+
+   <!-- Include script -->
+   {% include "includes/scripts.html" %}
+
+
+{% endblock content %}

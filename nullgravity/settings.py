@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'nullgravity',
     'coviddash',
+    'mask',
     'channels',
     'channels_redis',
     'django.contrib.humanize',

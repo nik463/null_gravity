@@ -114,7 +114,7 @@ app.layout = html.Div(
         dcc.Graph(
         id='clientside-graph',
                 ),
-        html.P(children="This is worldwide details of covid-19.Some country not updating there data, it make our graph blank",style={"text-align":"center"}),
+        html.P(children="This project is completly made in html css and plotly dash",style={"text-align":"center"}),
         
     ]
 )
