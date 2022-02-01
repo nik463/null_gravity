@@ -11,10 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import django_heroku
-import dj_database_url
-import os
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,7 +44,6 @@ INSTALLED_APPS = [
     'channels_redis',
     'django.contrib.humanize',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    
 ]
 
 MIDDLEWARE = [
@@ -70,7 +65,7 @@ ROOT_URLCONF = 'nullgravity.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['template'],
+        'DIRS': [BASE_DIR/'template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,7 +87,7 @@ WSGI_APPLICATION = 'nullgravity.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -131,14 +126,12 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_DIRS = [
+    BASE_DIR/'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -200,7 +193,3 @@ PLOTLY_COMPONENTS = [
     # Other components, as needed
     'dash_bootstrap_components',
 ]
-
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
