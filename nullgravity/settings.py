@@ -11,10 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import django_heroku
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +27,7 @@ SECRET_KEY = 'django-insecure-uz9slbi_7+t&j5v-ikv96mpnnnjnwb*#)urhjgr@l6wl+f%788
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
