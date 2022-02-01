@@ -12,10 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import django_heroku
+import dj_database_url
 import os
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -50,6 +48,8 @@ INSTALLED_APPS = [
     'channels_redis',
     'django.contrib.humanize',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'whitenoise.runserver_nostatic',
+    
 ]
 
 MIDDLEWARE = [
@@ -208,3 +208,6 @@ PLOTLY_COMPONENTS = [
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
