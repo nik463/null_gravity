@@ -57,3 +57,4 @@ zope.interface==5.4.0
 gunicorn
 whitenoise
 django-heroku
+dj-database-url
