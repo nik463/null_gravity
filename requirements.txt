@@ -19,7 +19,7 @@ dash-html-components
 dash-renderer
 dash-table
 dash
-Django
+Django==3.2.9
 django-plotly-dash
 dpd-components==0.1.0
 dpd-static-support==0.0.5
@@ -58,3 +58,4 @@ gunicorn
 whitenoise
 django-heroku
 dj-database-url
+python-dotenv
