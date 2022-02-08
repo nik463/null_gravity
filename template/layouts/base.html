@@ -24,11 +24,11 @@
 <link rel="stylesheet" href="{% static '/nik_files/owl.carousel.css' %}">
 <link rel="stylesheet" href="{% static '/nik_files/main.css' %}">
 
-{% include 'includes/scripts.html' %}
+
 
 <body class="" style="display: block;"><button type="button" id="mobile-nav-toggle"><i class="lnr lnr-menu"></i></button>
 
-  {% include "includes/header.html" %}       
+       
         <div class="main-content">
       
           {% block content %}{% endblock content %}
@@ -42,7 +42,7 @@
         
      
        </div>
-       
+       {% include 'includes/scripts.html' %}
 </body>
     
 </html>
