@@ -1746,7 +1746,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.png) no-repeat center center/cover;
+  /* background: url(../img/elements/primary-check.png) no-repeat center center/cover; */
   border: none;
 }
 
@@ -1784,7 +1784,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.png) no-repeat center center/cover;
+  /* background: url(../img/elements/success-check.png) no-repeat center center/cover; */
   border: none;
 }
 
@@ -1827,7 +1827,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
+  /* background: url(../img/elements/disabled-check.png) no-repeat center center/cover; */
   border: none;
 }
 
@@ -1865,7 +1865,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
+  /* background: url(../img/elements/primary-radio.png) no-repeat center center/cover; */
   border: none;
 }
 
@@ -1903,7 +1903,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.png) no-repeat center center/cover;
+  /* background: url(../img/elements/success-radio.png) no-repeat center center/cover; */
   border: none;
 }
 
@@ -1946,7 +1946,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
+  /* background: url(../img/elements/disabled-radio.png) no-repeat center center/cover; */
   border: none;
 }
 
@@ -3249,7 +3249,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* =================================== */
 /*============ Start Blog Home Styles  =============*/
 .blog-home-banner {
-  background: url(../img/blog/blog-home-banner.jpg) bottom;
+  /* background: url(../img/blog/blog-home-banner.jpg) bottom; */
   background-size: cover;
   padding: 130px 0px;
 }
@@ -4208,7 +4208,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 
 #myInput {
-    background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+    /* background-image: url('/css/searchicon.png'); Add a search icon to input */
     background-position: 10px 12px; /* Position the search icon */
     background-repeat: no-repeat; /* Do not repeat the icon image */
     width: 100%; /* Full-width */

@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'nullgravity',
     'coviddash',
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     'channels_redis',
     'django.contrib.humanize',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'whitenoise.runserver_nostatic',
 
 ]
 
