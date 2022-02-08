@@ -32,10 +32,14 @@
       
         
       
-        {% include 'includes/scripts.html' %}
+       
       
         <!-- Specific JS goes HERE --> 
-        {% block javascripts %}{% endblock javascripts %}
+        {% block javascript %}
+        
+        {% include 'includes/scripts.html' %}
+        
+        {% endblock javascript %}
        </div>
 </body>
     
